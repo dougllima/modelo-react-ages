@@ -1,0 +1,34 @@
+.preloader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  align-items: center;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+}
+.loaded.preloader {
+  opacity: 0;
+  transition: 1.1s ease;
+}
+.spinner {
+  animation: spinner 0.7s infinite linear;
+  border: 3px solid rgba(0, 0, 0, 0.6);
+  border-radius: 100%;
+  border-top-color: #fff;
+  height: 7em;
+  position: fixed;
+  width: 7em;
+  z-index: 1;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotateZ(360deg);
+  }
+}
