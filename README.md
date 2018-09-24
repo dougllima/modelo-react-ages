@@ -14,9 +14,19 @@
   - [Serviços](#servi%C3%A7os)
   - [Views](#views)
 
+<details><summary>
+
+</summary><p>
+
+</p></details>
+
 # Estrutura
 
+<details><summary>
+
 ## Configurações
+
+</summary><p>
 
 ### Ambiente
 
@@ -54,7 +64,14 @@ Rotas atuais:
 
 Responsável por definir as URLs do sistema com base no ambiente atual.
 
+</p></details>
+
+<details><summary>
+
 ## Contexto
+
+</summary>
+<p>
 
 Os **[contextos do React](https://reactjs.org/docs/context.html)** são utilizados como **"estados globais"** da aplicação, podendo serem acessados em qualquer componente sem que se precise passar os valores como props por vários niveis.
 
@@ -130,7 +147,13 @@ render(){
 }
 ```
 
+</p>
+</details>
+<details><summary>
+
 ## Helpers
+
+</summary><p>
 
 ### ModelValidator()
 
@@ -146,7 +169,13 @@ Responsável por receber o path de uma [View](#views) e retornar o componente da
 - Loader inserido automaticamente;
 - Injeção dos contexto de `App` e `Login` através das props.
 
+</p></details>
+
+<details><summary>
+
 ## Modelos
+
+</summary><p>
 
 **Objetos** que serão utilizados para a **representação de dados** do sistema.
 Todos os modelos devem apresentar a seguinte estrutura:
@@ -187,9 +216,21 @@ outraPropriedade;
 }
 ```
 
+</p></details>
+
+<details><summary>
+
 ## Serviços
 
+</summary><p>
+
+</p></details>
+
+<details><summary>
+
 ## Views
+
+</summary><p>
 
 **Componentes** que representam uma tela a ser renderizada para o usuário. Todas as páginas devem **extender uma página default `<Page>`**.
 
@@ -217,3 +258,5 @@ render() {
   );
 }
 ```
+
+</p></details>
