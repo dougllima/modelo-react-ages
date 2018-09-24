@@ -26,17 +26,17 @@ Constantes que auxiliam na padronização do sistema. Servem para substituir val
 
 ### Ambiente
 
-Indicação do ambiente que o sistema está rodando, se é publicado ou é algum ambiente de desenvolvimento.
+Indicação do **ambiente** que o sistema está rodando, se é **produção**, **homologação** ou **desenvolvimento**.
 
 A configuração é feita atraves da váriavel de ambiente `NODE_ENV`.
 
 ### Rotas
 
-Configurações de rotas do sistema, onde são cadastradas todas as páginas e as suas respectivas URLs, utilizando o componente [`<Route>`](https://reacttraining.com/react-router/core/api/Route) do [react-router-dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)
+Configurações de **rotas do sistema**, onde são cadastradas todas as páginas e as suas respectivas **URLs**, utilizando o componente [`<Route>`](https://reacttraining.com/react-router/core/api/Route) do [react-router-dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)
 
-Quando uma nova rota para uma página for configurada, deve-se usar o helper [`ViewWrapper`](#helpers), que utiliza o modulo [react-loadable](https://github.com/jamiebuilds/react-loadable) para adicionar funções de loading na página, juntamente com acesso aos contextos de App e Login:
+**Quando criada uma nova rota**, usar o helper [`ViewWrapper`](#helpers), que utiliza o modulo [react-loadable](https://github.com/jamiebuilds/react-loadable) para adicionar funções de loading na página, juntamente com acesso aos contextos de App e Login:
 
-- Ao inves de realizar um import normal, cria-se uma constante para receber o valor da função `ViewWrapper`, que recebe como parametro o caminho para o componente desejado (relativo a pasta `views`).
+- Ao inves de realizar um import normal, criar uma constante para receber o valor da função `ViewWrapper`, que recebe como parametro o caminho para o componente desejado **(relativo a pasta `views`)**.
 
 ```
 // Path completo = ./views/HomePage/HomePage
@@ -54,7 +54,7 @@ Responsável por definir as URLs do sistema com base no ambiente atual.
 
 ## Modelos
 
-Objetos que serão utilizados para a representação dos dados do sistema.
+**Objetos** que serão utilizados para a **representação de dados** do sistema.
 Todos os modelos devem apresentar a seguinte estrutura:
 
 Import obrigatorio para realizar as validações de schema da classe.
@@ -63,8 +63,8 @@ Import obrigatorio para realizar as validações de schema da classe.
 import ModelValidator from "./../lib/ModelValidator";
 ```
 
-Schema do objeto que será iniciado
-com as propriedades da classe e seus [tipos](https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md#type), conforme [biblioteca de validação](https://github.com/epoberezkin/ajv).
+**Schema** do objeto que será iniciado
+com as **propriedades da classe e seus [tipos](https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md#type)**, conforme [biblioteca de validação](https://github.com/epoberezkin/ajv).
 
 ```
 let schema = {
@@ -77,7 +77,7 @@ required: ["data", "error", "status"]
 }
 ```
 
-Declaração do objeto com suas propriedades (atributos) e com o construtor que realizara a validação.
+Declaração do objeto com suas propriedades (atributos) e com o **construtor que realizara a validação**.
 
 ```
 class Objeto {
@@ -95,17 +95,17 @@ outraPropriedade;
 
 ## Views
 
-Componentes que representam uma tela a ser renderizada para o usuário. Todas as páginas devem extender uma página default `<Page>`.
+**Componentes** que representam uma tela a ser renderizada para o usuário. Todas as páginas devem **extender uma página default `<Page>`**.
 
 O componente `<Page>` possui os métodos:
 
-- `isAuthenticated()` - Retorna se o usuário está autenticado ou não.
-- `setLoaded(bool)` - Define se o loader deve ou não aparecer na tela.
+- **`isAuthenticated()`** - Retorna se o usuário está autenticado ou não.
+- **`setLoaded(bool)`** - Define se o loader deve ou não aparecer na tela.
 
-Além disso possui também os métodos que devem ser sobreescritos em cada página:
+Além disso possui também os métodos que **devem ser sobreescritos** em cada página:
 
-- `authenticated()` - Retorna [JSX](https://reactjs.org/docs/introducing-jsx.html) para ser renderizado caso o usuário esteja autenticado.
-- `unauthenticated()` - Retorna [JSX](https://reactjs.org/docs/introducing-jsx.html) para ser renderizado caso o usuário não esteja autenticado.
+- **`authenticated()`** - Retorna [JSX](https://reactjs.org/docs/introducing-jsx.html) para ser renderizado caso o usuário esteja autenticado.
+- **`unauthenticated()`** - Retorna [JSX](https://reactjs.org/docs/introducing-jsx.html) para ser renderizado caso o usuário não esteja autenticado.
 
 A menos que a página em questão altere esse comportamento, o componente `<Page>` renderiza na tela o seguinte:
 
@@ -126,11 +126,11 @@ render() {
 
 ### Contexto
 
-Neste caso os [contextos do React](https://reactjs.org/docs/context.html) serão utilizados como "estados globais" da aplicação, podendo serem acessados em qualquer componente sem que se precise passar os valores como props por vários niveis.
+Os **[contextos do React](https://reactjs.org/docs/context.html)** são utilizados como **"estados globais"** da aplicação, podendo serem acessados em qualquer componente sem que se precise passar os valores como props por vários niveis.
 
-Cada Contexto possui 2 arquivos:
+Cada Contexto possui **2 arquivos**:
 
-- Arquivo responsável por criar o contexto com seu [Provider](https://reactjs.org/docs/context.html#provider) e [Consumer](https://reactjs.org/docs/context.html#consumer):
+- Arquivo responsável por **criar o contexto** com seu [Provider](https://reactjs.org/docs/context.html#provider) e [Consumer](https://reactjs.org/docs/context.html#consumer):
 
 ```
 import React from "react";
@@ -140,7 +140,7 @@ const AppContext = React.createContext();
 export default AppContext;
 ```
 
-- Componente que guardara no seu state o valor do contexto:
+- Componente que guardara no seu state o valor do contexto, **encapsulando o Provider original**:
 
 ```
 import React, { Component } from "react";
@@ -174,11 +174,11 @@ class AppProvider extends Component {
 export default AppProvider;
 ```
 
-Depois desses arquivos criados, o componente `<AppProvider>` deve englobar a aplicação, como no arquivo App.js, linha 37.
+Depois desses arquivos criados, o componente `<AppProvider>` deve **englobar a aplicação**, como no arquivo [App.js, linha 37](https://github.com/dougllima/modelo-react-ages/blob/9e555b22e96ea3e45e35471307864e6fde859456/src/App.js#L37).
 
-**IMPORTANTE:** O componente que deve englobara aplicação é o criado com base no contexto (neste caso `<AppProvider>`) e não Provider do proprio contexto (neste caso `<AppContext.Provider>`)
+**IMPORTANTE: O componente que deve englobara aplicação é o criado com base no contexto (neste caso `<AppProvider>`) e não Provider do proprio contexto (neste caso `<AppContext.Provider>`)**
 
-Agora para acessar o valor em qualquer componente da aplicação, basta chamar o Consumer do contexto desejado:
+Agora para acessar o valor em qualquer componente da aplicação, basta chamar o **Consumer** do contexto desejado:
 
 ```
 import AppContext from "./Context/AppContext/AppContext";
