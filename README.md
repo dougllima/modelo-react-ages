@@ -11,6 +11,8 @@
   - [Componentes](#componentes)
     - [Contexto](#contexto)
   - [Helpers](#helpers)
+    - [ModelValidator()](#modelvalidator)
+    - [ViewWrapper()](#viewwrapper)
 
 # Estrutura
 
@@ -34,9 +36,9 @@ A configuração é feita atraves da váriavel de ambiente `NODE_ENV`.
 
 Configurações de **rotas do sistema**, onde são cadastradas todas as páginas e as suas respectivas **URLs**, utilizando o componente [`<Route>`](https://reacttraining.com/react-router/core/api/Route) do [react-router-dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)
 
-**Quando criada uma nova rota**, usar o helper [`ViewWrapper`](#helpers), que utiliza o modulo [react-loadable](https://github.com/jamiebuilds/react-loadable) para adicionar funções de loading na página, juntamente com acesso aos contextos de App e Login:
+**Quando criada uma nova rota**, usar o helper [`ViewWrapper()`](#viewwrapper):
 
-- Ao inves de realizar um import normal, criar uma constante para receber o valor da função `ViewWrapper`, que recebe como parametro o caminho para o componente desejado **(relativo a pasta `views`)**.
+- Ao inves de realizar um import normal, criar uma constante para receber o valor da função [`ViewWrapper()`](#viewwrapper), que recebe como parametro o caminho para o componente desejado **(relativo a pasta [`/views`](#views))**.
 
 ```
 // Path completo = ./views/HomePage/HomePage
@@ -201,3 +203,17 @@ render(){
 ```
 
 ## Helpers
+
+### ModelValidator()
+
+Responsável por válidar os objetos criados de acordo com o schema informado.
+
+Utiliza o modulo [**ajv**](https://github.com/epoberezkin/ajv).
+
+### ViewWrapper()
+
+Responsável por receber o path de uma [View](#views) e retornar o componente da tela referente, porém dentro de um **componente Loadable** do modulo [react-loadable](https://github.com/jamiebuilds/react-loadable), que possui algumas vantagens:
+
+- Import dinâmico dos componentes;
+- Loader inserido automaticamente;
+- Injeção dos contexto de `App` e `Login` através das props.
