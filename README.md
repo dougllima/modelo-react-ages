@@ -15,12 +15,9 @@
   - [Views](#views)
 
 # Estrutura
-
-<details><summary>
-
+  
 ## Configurações
-
-</summary><p>
+<details><summary></summary><p>
 
 ### Ambiente
 
@@ -60,12 +57,8 @@ Responsável por definir as URLs do sistema com base no ambiente atual.
 
 </p></details>
 
-<details><summary>
-
 ## Contexto
-
-</summary>
-<p>
+<details><summary></summary><p>
 
 Os **[contextos do React](https://reactjs.org/docs/context.html)** são utilizados como **"estados globais"** da aplicação, podendo serem acessados em qualquer componente sem que se precise passar os valores como props por vários niveis.
 
@@ -141,13 +134,10 @@ render(){
 }
 ```
 
-</p>
-</details>
-<details><summary>
+</p></details>
 
 ## Helpers
-
-</summary><p>
+<details><summary></summary><p>
 
 ### ModelValidator()
 
@@ -165,11 +155,8 @@ Responsável por receber o path de uma [View](#views) e retornar o componente da
 
 </p></details>
 
-<details><summary>
-
 ## Modelos
-
-</summary><p>
+<details><summary></summary><p>
 
 **Objetos** que serão utilizados para a **representação de dados** do sistema.
 Todos os modelos devem apresentar a seguinte estrutura:
@@ -212,19 +199,15 @@ outraPropriedade;
 
 </p></details>
 
-<details><summary>
-
 ## Serviços
+<details><summary></summary><p>
 
-</summary><p>
+TODO
 
 </p></details>
 
-<details><summary>
-
 ## Views
-
-</summary><p>
+<details><summary></summary><p>
 
 **Componentes** que representam uma tela a ser renderizada para o usuário. Todas as páginas devem **extender uma página default `<Page>`**.
 
