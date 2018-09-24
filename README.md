@@ -41,7 +41,7 @@ Configurações de **rotas do sistema**, onde são cadastradas todas as páginas
 
 - Ao inves de realizar um import normal, criar uma constante para receber o valor da função [`ViewWrapper()`](#viewwrapper), que recebe como parametro o caminho para o componente desejado **(relativo a pasta [`/views`](#views))**.
 
-```
+```javascript
 // Path completo = ./views/HomePage/HomePage
 const HomePage = ViewWrapper("HomePage/HomePage");
 ```
@@ -62,14 +62,14 @@ Todos os modelos devem apresentar a seguinte estrutura:
 
 Import obrigatorio para realizar as validações de schema da classe.
 
-```
+```javascript
 import ModelValidator from "./../lib/ModelValidator";
 ```
 
 **Schema** do objeto que será iniciado
 com as **propriedades da classe e seus [tipos](https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md#type)**, conforme [biblioteca de validação](https://github.com/epoberezkin/ajv).
 
-```
+```javascript
 let schema = {
 properties: {
   data: { type: "object" },
@@ -82,7 +82,7 @@ required: ["data", "error", "status"]
 
 Declaração do objeto com suas propriedades (atributos) e com o **construtor que realizara a validação**.
 
-```
+```javascript
 class Objeto {
 propriedade;
 outraPropriedade;
@@ -112,7 +112,7 @@ Além disso possui também os métodos que **devem ser sobreescritos** em cada p
 
 A menos que a página em questão altere esse comportamento, o componente `<Page>` renderiza na tela o seguinte:
 
-```
+```javascript
 render() {
   return (
     <React.Fragment>
@@ -135,7 +135,7 @@ Cada Contexto possui **2 arquivos**:
 
 - Arquivo responsável por **criar o contexto** com seu [Provider](https://reactjs.org/docs/context.html#provider) e [Consumer](https://reactjs.org/docs/context.html#consumer):
 
-```
+```javascript
 import React from "react";
 
 const AppContext = React.createContext();
@@ -145,7 +145,7 @@ export default AppContext;
 
 - Componente que guardara no seu state o valor do contexto, **encapsulando o Provider original**:
 
-```
+```javascript
 import React, { Component } from "react";
 
 // Import do contexto criado anteriormente
@@ -183,10 +183,10 @@ Depois desses arquivos criados, o componente `<AppProvider>` deve **englobar a a
 
 Agora para acessar o valor em qualquer componente da aplicação, basta chamar o **Consumer** do contexto desejado:
 
-```
+```javascript
 import AppContext from "./Context/AppContext/AppContext";
 
-...
+// ...
 
 render(){
   return (
