@@ -1,4 +1,4 @@
-import ModelValidator from "./../lib/ModelValidator";
+import ModelValidator from "./../helpers/ModelValidator";
 
 /**
  * @class
