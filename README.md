@@ -2,22 +2,27 @@
 
 - [Estrutura](#estrutura)
   - [Configurações](#configura%C3%A7%C3%B5es)
-    - [Constantes](#constantes)
     - [Ambiente](#ambiente)
+    - [Constantes](#constantes)
     - [Rotas](#rotas)
     - [URLs](#urls)
-  - [Modelos](#modelos)
-  - [Views](#views)
-  - [Componentes](#componentes)
-    - [Contexto](#contexto)
+  - [Contexto](#contexto)
   - [Helpers](#helpers)
     - [ModelValidator()](#modelvalidator)
     - [ViewWrapper()](#viewwrapper)
+  - [Modelos](#modelos)
   - [Serviços](#servi%C3%A7os)
+  - [Views](#views)
 
 # Estrutura
 
 ## Configurações
+
+### Ambiente
+
+Indicação do **ambiente** que o sistema está rodando, se é **produção**, **homologação** ou **desenvolvimento**.
+
+A configuração é feita atraves da váriavel de ambiente `NODE_ENV`.
 
 ### Constantes
 
@@ -26,12 +31,6 @@ Constantes que auxiliam na padronização do sistema. Servem para substituir val
 - [Respostas HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status);
 - Respostas da API;
 - Exceções da Aplicação.
-
-### Ambiente
-
-Indicação do **ambiente** que o sistema está rodando, se é **produção**, **homologação** ou **desenvolvimento**.
-
-A configuração é feita atraves da váriavel de ambiente `NODE_ENV`.
 
 ### Rotas
 
@@ -55,79 +54,7 @@ Rotas atuais:
 
 Responsável por definir as URLs do sistema com base no ambiente atual.
 
-## Modelos
-
-**Objetos** que serão utilizados para a **representação de dados** do sistema.
-Todos os modelos devem apresentar a seguinte estrutura:
-
-Import obrigatorio para realizar as validações de schema da classe.
-
-```
-import ModelValidator from "./../lib/ModelValidator";
-```
-
-**Schema** do objeto que será iniciado
-com as **propriedades da classe e seus [tipos](https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md#type)**, conforme [biblioteca de validação](https://github.com/epoberezkin/ajv).
-
-```
-let schema = {
-properties: {
-  data: { type: "object" },
-  error: { type: "object" },
-  status: { type: "string" }
-},
-required: ["data", "error", "status"]
-}
-```
-
-Declaração do objeto com suas propriedades (atributos) e com o **construtor que realizara a validação**.
-
-```
-class Objeto {
-propriedade;
-outraPropriedade;
-
-// Construtor da classe, recebendo o objeto que deve ser inicializado.
-  constructor(obj){
-    // Método que valida o objeto de acordo com o schema
-    //e inicializa uma nova instancia dele
-    ModelValidator(obj, schema, this);
-  }
-}
-```
-
-## Views
-
-**Componentes** que representam uma tela a ser renderizada para o usuário. Todas as páginas devem **extender uma página default `<Page>`**.
-
-O componente `<Page>` possui os métodos:
-
-- **`isAuthenticated()`** - Retorna se o usuário está autenticado ou não.
-- **`setLoaded(bool)`** - Define se o loader deve ou não aparecer na tela.
-
-Além disso possui também os métodos que **devem ser sobreescritos** em cada página:
-
-- **`authenticated()`** - Retorna [JSX](https://reactjs.org/docs/introducing-jsx.html) para ser renderizado caso o usuário esteja autenticado.
-- **`unauthenticated()`** - Retorna [JSX](https://reactjs.org/docs/introducing-jsx.html) para ser renderizado caso o usuário não esteja autenticado.
-
-A menos que a página em questão altere esse comportamento, o componente `<Page>` renderiza na tela o seguinte:
-
-```
-render() {
-  return (
-    <React.Fragment>
-      <Header />
-      {this.props.isAuthenticated()
-        ? this.authenticated()
-        : this.unauthenticated()}
-    </React.Fragment>
-  );
-}
-```
-
-## Componentes
-
-### Contexto
+## Contexto
 
 Os **[contextos do React](https://reactjs.org/docs/context.html)** são utilizados como **"estados globais"** da aplicação, podendo serem acessados em qualquer componente sem que se precise passar os valores como props por vários niveis.
 
@@ -219,4 +146,74 @@ Responsável por receber o path de uma [View](#views) e retornar o componente da
 - Loader inserido automaticamente;
 - Injeção dos contexto de `App` e `Login` através das props.
 
+## Modelos
+
+**Objetos** que serão utilizados para a **representação de dados** do sistema.
+Todos os modelos devem apresentar a seguinte estrutura:
+
+Import obrigatorio para realizar as validações de schema da classe.
+
+```
+import ModelValidator from "./../lib/ModelValidator";
+```
+
+**Schema** do objeto que será iniciado
+com as **propriedades da classe e seus [tipos](https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md#type)**, conforme [biblioteca de validação](https://github.com/epoberezkin/ajv).
+
+```
+let schema = {
+properties: {
+  data: { type: "object" },
+  error: { type: "object" },
+  status: { type: "string" }
+},
+required: ["data", "error", "status"]
+}
+```
+
+Declaração do objeto com suas propriedades (atributos) e com o **construtor que realizara a validação**.
+
+```
+class Objeto {
+propriedade;
+outraPropriedade;
+
+// Construtor da classe, recebendo o objeto que deve ser inicializado.
+  constructor(obj){
+    // Método que valida o objeto de acordo com o schema
+    //e inicializa uma nova instancia dele
+    ModelValidator(obj, schema, this);
+  }
+}
+```
+
 ## Serviços
+
+## Views
+
+**Componentes** que representam uma tela a ser renderizada para o usuário. Todas as páginas devem **extender uma página default `<Page>`**.
+
+O componente `<Page>` possui os métodos:
+
+- **`isAuthenticated()`** - Retorna se o usuário está autenticado ou não.
+- **`setLoaded(bool)`** - Define se o loader deve ou não aparecer na tela.
+
+Além disso possui também os métodos que **devem ser sobreescritos** em cada página:
+
+- **`authenticated()`** - Retorna [JSX](https://reactjs.org/docs/introducing-jsx.html) para ser renderizado caso o usuário esteja autenticado.
+- **`unauthenticated()`** - Retorna [JSX](https://reactjs.org/docs/introducing-jsx.html) para ser renderizado caso o usuário não esteja autenticado.
+
+A menos que a página em questão altere esse comportamento, o componente `<Page>` renderiza na tela o seguinte:
+
+```
+render() {
+  return (
+    <React.Fragment>
+      <Header />
+      {this.props.isAuthenticated()
+        ? this.authenticated()
+        : this.unauthenticated()}
+    </React.Fragment>
+  );
+}
+```
