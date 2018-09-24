@@ -6,8 +6,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 
 // Internal
 import Routing from "./config/Routing";
-import AppProvider from "./components/Context/AppContext/AppProvider";
-import LoginProvider from "./components/Context/LoginContext/LoginProvider";
+import AppProvider from "./contexts/AppContext/AppProvider";
+import LoginProvider from "./contexts/LoginContext/LoginProvider";
 
 // Theme Imports
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";

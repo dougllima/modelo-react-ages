@@ -3,7 +3,6 @@ import logo from "./logo_ages.svg";
 import { withRouter, Redirect } from "react-router-dom";
 
 // Biblioteca de Componentes
-import Menu from "@material-ui/core/Menu";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -14,7 +13,7 @@ import Typography from "@material-ui/core/Typography";
 
 // Importando o Contexto de autenticação, não tratamos mais com os services.
 import LoginForm from "../LoginForm/LoginForm";
-import LoginContext from "../Context/LoginContext/LoginContext";
+import LoginContext from "./../../contexts/LoginContext/LoginContext";
 import { SwipeableDrawer } from "@material-ui/core";
 
 const styles = theme => ({
@@ -69,7 +68,6 @@ class Header extends React.Component {
 
   // Renderizando botão de Login
   renderLogin = anchorLogin => {
-    const { classes } = this.props;
     let open = Boolean(anchorLogin);
 
     return (

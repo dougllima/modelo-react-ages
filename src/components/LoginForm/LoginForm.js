@@ -5,7 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 import { TextField, Grid, Button } from "@material-ui/core";
 
-import LoginContext from "./../Context/LoginContext/LoginContext";
+import LoginContext from "./../../contexts/LoginContext/LoginContext";
 
 const styles = theme => {
   console.log(theme);

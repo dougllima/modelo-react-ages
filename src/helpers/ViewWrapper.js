@@ -4,9 +4,9 @@ import Loadable from "react-loadable";
 
 import Loader from "../components/Loader/Loader";
 
-import AppContext from "./../components/Context/AppContext/AppContext";
+import AppContext from "./../contexts/AppContext/AppContext";
 
-import LoginContext from "./../components/Context/LoginContext/LoginContext";
+import LoginContext from "./../contexts/LoginContext/LoginContext";
 
 // Criando um componente de Wrapper para as views, que adiciona o loader e o contexto no import.
 const ViewWrapper = path =>

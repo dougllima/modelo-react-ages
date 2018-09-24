@@ -3,7 +3,7 @@ import React, { Component } from "react";
 //Utilizando .js no import pois o contexto não é uma classe
 import LoginContext from "./LoginContext";
 
-import { login, logout, validToken } from "./../../../services/authService";
+import { login, logout, validToken } from "./../../services/authService";
 
 //Provedor do Contexto da aplicação, todos componentes abaixo desse tem acesso ao state dele, atravez de um Consumidor de contexto
 class LoginProvider extends Component {

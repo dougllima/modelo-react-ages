@@ -13,6 +13,7 @@
   - [Helpers](#helpers)
     - [ModelValidator()](#modelvalidator)
     - [ViewWrapper()](#viewwrapper)
+  - [Serviços](#servi%C3%A7os)
 
 # Estrutura
 
@@ -217,3 +218,5 @@ Responsável por receber o path de uma [View](#views) e retornar o componente da
 - Import dinâmico dos componentes;
 - Loader inserido automaticamente;
 - Injeção dos contexto de `App` e `Login` através das props.
+
+## Serviços

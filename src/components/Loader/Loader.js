@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import AppContext from "./../Context/AppContext/AppContext";
+import AppContext from "./../../contexts/AppContext/AppContext";
 
 import "./Loader.css";
 
