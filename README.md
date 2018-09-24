@@ -1,16 +1,15 @@
 ## Indice
 
 - [Estrutura](#estrutura)
-
   - [Configurações](#configura%C3%A7%C3%B5es)
     - [Constantes](#constantes)
     - [Ambiente](#ambiente)
     - [Rotas](#rotas)
     - [URLs](#urls)
   - [Modelos](#modelos)
-  - [Contexto](#contexto)
   - [Views](#views)
   - [Componentes](#componentes)
+    - [Contexto](#contexto)
   - [Helpers](#helpers)
 
 # Estrutura
@@ -53,7 +52,7 @@ Rotas atuais:
 
 Responsável por definir as URLs do sistema com base no ambiente atual.
 
-### Modelos
+## Modelos
 
 Objetos que serão utilizados para a representação dos dados do sistema.
 Todos os modelos devem apresentar a seguinte estrutura:
@@ -93,6 +92,37 @@ outraPropriedade;
   }
 }
 ```
+
+## Views
+
+Componentes que representam uma tela a ser renderizada para o usuário. Todas as páginas devem extender uma página default `<Page>`.
+
+O componente `<Page>` possui os métodos:
+
+- `isAuthenticated()` - Retorna se o usuário está autenticado ou não.
+- `setLoaded(bool)` - Define se o loader deve ou não aparecer na tela.
+
+Além disso possui também os métodos que devem ser sobreescritos em cada página:
+
+- `authenticated()` - Retorna [JSX](https://reactjs.org/docs/introducing-jsx.html) para ser renderizado caso o usuário esteja autenticado.
+- `unauthenticated()` - Retorna [JSX](https://reactjs.org/docs/introducing-jsx.html) para ser renderizado caso o usuário não esteja autenticado.
+
+A menos que a página em questão altere esse comportamento, o componente `<Page>` renderiza na tela o seguinte:
+
+```
+render() {
+  return (
+    <React.Fragment>
+      <Header />
+      {this.props.isAuthenticated()
+        ? this.authenticated()
+        : this.unauthenticated()}
+    </React.Fragment>
+  );
+}
+```
+
+## Componentes
 
 ### Contexto
 
@@ -170,35 +200,4 @@ render(){
 }
 ```
 
-### Views
-
-Componentes que representam uma tela a ser renderizada para o usuário. Todas as páginas devem extender uma página default `<Page>`.
-
-O componente `<Page>` possui os métodos:
-
-- `isAuthenticated()` - Retorna se o usuário está autenticado ou não.
-- `setLoaded(bool)` - Define se o loader deve ou não aparecer na tela.
-
-Além disso possui também os métodos que devem ser sobreescritos em cada página:
-
-- `authenticated()` - Retorna [JSX](https://reactjs.org/docs/introducing-jsx.html) para ser renderizado caso o usuário esteja autenticado.
-- `unauthenticated()` - Retorna [JSX](https://reactjs.org/docs/introducing-jsx.html) para ser renderizado caso o usuário não esteja autenticado.
-
-A menos que a página em questão altere esse comportamento, o componente `<Page>` renderiza na tela o seguinte:
-
-```
-render() {
-  return (
-    <React.Fragment>
-      <Header />
-      {this.props.isAuthenticated()
-        ? this.authenticated()
-        : this.unauthenticated()}
-    </React.Fragment>
-  );
-}
-```
-
-### Componentes
-
-### Helpers
+## Helpers
