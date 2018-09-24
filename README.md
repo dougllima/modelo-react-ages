@@ -53,7 +53,7 @@ Rotas atuais:
 
 Responsável por definir as URLs do sistema com base no ambiente atual.
 
-## Modelos
+### Modelos
 
 Objetos que serão utilizados para a representação dos dados do sistema.
 Todos os modelos devem apresentar a seguinte estrutura:
@@ -94,7 +94,7 @@ outraPropriedade;
 }
 ```
 
-## Contexto
+### Contexto
 
 Neste caso os [contextos do React](https://reactjs.org/docs/context.html) serão utilizados como "estados globais" da aplicação, podendo serem acessados em qualquer componente sem que se precise passar os valores como props por vários niveis.
 
@@ -170,7 +170,7 @@ render(){
 }
 ```
 
-## Views
+### Views
 
 Componentes que representam uma tela a ser renderizada para o usuário. Todas as páginas devem extender uma página default `<Page>`.
 
@@ -199,6 +199,6 @@ render() {
 }
 ```
 
-## Componentes
+### Componentes
 
-## Helpers
+### Helpers
