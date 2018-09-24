@@ -14,12 +14,6 @@
   - [Serviços](#servi%C3%A7os)
   - [Views](#views)
 
-<details><summary>
-
-</summary><p>
-
-</p></details>
-
 # Estrutura
 
 <details><summary>
@@ -50,7 +44,7 @@ Configurações de **rotas do sistema**, onde são cadastradas todas as páginas
 
 - Ao inves de realizar um import normal, criar uma constante para receber o valor da função [`ViewWrapper()`](#viewwrapper), que recebe como parametro o caminho para o componente desejado **(relativo a pasta [`/views`](#views))**.
 
-```
+```javascript
 // Path completo = ./views/HomePage/HomePage
 const HomePage = ViewWrapper("HomePage/HomePage");
 ```
@@ -79,7 +73,7 @@ Cada Contexto possui **2 arquivos**:
 
 - Arquivo responsável por **criar o contexto** com seu [Provider](https://reactjs.org/docs/context.html#provider) e [Consumer](https://reactjs.org/docs/context.html#consumer):
 
-```
+```javascript
 import React from "react";
 
 const AppContext = React.createContext();
@@ -89,7 +83,7 @@ export default AppContext;
 
 - Componente que guardara no seu state o valor do contexto, **encapsulando o Provider original**:
 
-```
+```javascript
 import React, { Component } from "react";
 
 // Import do contexto criado anteriormente
@@ -127,10 +121,10 @@ Depois desses arquivos criados, o componente `<AppProvider>` deve **englobar a a
 
 Agora para acessar o valor em qualquer componente da aplicação, basta chamar o **Consumer** do contexto desejado:
 
-```
+```javascript
 import AppContext from "./Context/AppContext/AppContext";
 
-...
+// ...
 
 render(){
   return (
