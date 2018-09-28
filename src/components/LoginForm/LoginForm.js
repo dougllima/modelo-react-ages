@@ -2,22 +2,25 @@ import React from "react";
 
 import { withRouter } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 
 import { TextField, Grid, Button } from "@material-ui/core";
 
 import LoginContext from "./../../contexts/LoginContext/LoginContext";
 
 const styles = theme => {
-  console.log(theme);
   return {
     loginButton: {
       height: "56px",
       paddingTop: "18.5px",
       paddingBottom: "18.5px",
-      marginTop: theme.spacing.unit * 2
+      marginTop: theme.spacing.unit * 2,
+
+      [theme.breakpoints.down("sm")]: {
+        marginBottom: theme.spacing.unit * 2
+      }
     },
     layout: {
-      width: "200px",
       height: "auto",
       overflow: "hidden",
       marginLeft: theme.spacing.unit * 2,
@@ -69,7 +72,13 @@ class LoginForm extends React.Component {
         {loginValue => {
           const { authService } = loginValue;
           return (
-            <div className={classes.layout}>
+            <div
+              className={
+                classes.layout +
+                " " +
+                { width: isWidthUp("sm", this.props.width) ? "200px" : "100%" }
+              }
+            >
               <Grid container spacing={8}>
                 <Grid item xs={12}>
                   <TextField
@@ -118,4 +127,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default withRouter(withStyles(styles)(LoginForm));
+export default withWidth()(withRouter(withStyles(styles)(LoginForm)));

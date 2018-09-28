@@ -3,18 +3,21 @@ import logo from "./logo_ages.svg";
 import { withRouter, Redirect } from "react-router-dom";
 
 // Biblioteca de Componentes
-import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
+import {
+  AppBar,
+  Button,
+  Toolbar,
+  Typography,
+  IconButton,
+  SwipeableDrawer
+} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import Toolbar from "@material-ui/core/Toolbar";
 import { withStyles } from "@material-ui/core/styles";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 
 // Importando o Contexto de autenticação, não tratamos mais com os services.
 import LoginForm from "../LoginForm/LoginForm";
 import LoginContext from "./../../contexts/LoginContext/LoginContext";
-import { SwipeableDrawer } from "@material-ui/core";
 
 const styles = theme => ({
   root: {
@@ -58,12 +61,8 @@ class Header extends React.Component {
     history.push(path);
   };
 
-  handleMenuOpen = name => {
-    this.setState({ [name]: true });
-  };
-
-  handleMenuClose = name => {
-    this.setState({ [name]: false });
+  handleMenu = (name, bool) => {
+    this.setState({ [name]: bool });
   };
 
   // Renderizando botão de Login
@@ -75,15 +74,15 @@ class Header extends React.Component {
         <Button
           color="inherit"
           id="loginBtn" // Colocar ids diferentes para os automatores de software poderem encontrar esse elemento da pagina
-          onClick={e => this.handleMenuOpen("anchorLogin")}
+          onClick={e => this.handleMenu("anchorLogin", true)}
         >
           Logar-se
         </Button>
         <SwipeableDrawer
           open={open}
-          anchor="right"
-          onOpen={() => this.handleMenuOpen("anchorLogin")}
-          onClose={() => this.handleMenuClose("anchorLogin")}
+          anchor={isWidthUp("sm", this.props.width) ? "right" : "top"}
+          onOpen={() => this.handleMenu("anchorLogin", true)}
+          onClose={() => this.handleMenu("anchorLogin", false)}
         >
           <LoginForm />
         </SwipeableDrawer>
@@ -178,4 +177,4 @@ class Header extends React.Component {
   }
 }
 
-export default withStyles(styles)(withRouter(Header));
+export default withWidth()(withStyles(styles)(withRouter(Header)));

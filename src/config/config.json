@@ -1,11 +1,13 @@
 {
-  "development": {
-    "api_url": "http://localhost:4000/api"
-  },
-  "hml": {
-    "api_url": ""
-  },
-  "prod": {
-    "api_url": ""
+  "ambientes": {
+    "development": {
+      "api_url": "http://localhost:4000/api"
+    },
+    "hml": {
+      "api_url": ""
+    },
+    "prod": {
+      "api_url": ""
+    }
   }
 }
