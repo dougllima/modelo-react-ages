@@ -57,8 +57,8 @@ class LoginForm extends React.Component {
         }
       });
     } else {
-      loginFunc(username, password).then(result => {
-        console.log(result);
+      loginFunc(username, password).then(user => {
+        //Callback para quando o usuário logou com sucesso
       });
     }
   };

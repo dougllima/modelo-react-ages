@@ -16,7 +16,7 @@ class Page extends Component {
     headerVisible: PropTypes.bool.isRequired,
 
     //Auth
-    userData: PropTypes.oneOf([PropTypes.null, PropTypes.object]),
+    userData: PropTypes.object,
     isAuthenticated: PropTypes.func.isRequired
   };
 

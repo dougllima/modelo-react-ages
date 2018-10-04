@@ -17,9 +17,12 @@ class AppProvider extends Component {
   }
 
   setLoaded = loaded => {
-    //Alterando o state apenas quando necessário
+    //Exemplo de set state que
+    // altera o state apenas quando necessário
     this.setState((state, props) => {
-      return state.isLoaded === loaded ? null : { isLoaded: loaded };
+      //Se a propriedade alterada é igual a atual, não precisa alterar nada
+      if (state.isLoaded === loaded) return null;
+      else return { isLoaded: loaded };
     });
   };
 
@@ -30,8 +33,6 @@ class AppProvider extends Component {
       </AppContext.Provider>
     );
   }
-
-  //Métodos de Login
 }
 
 export default AppProvider;
